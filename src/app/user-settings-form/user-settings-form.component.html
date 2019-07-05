@@ -1,0 +1,136 @@
+<div class="container">
+  <h2>User Setings</h2>
+  <form #form="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        name="name"
+        class="form-control"
+        placeholder="Name"
+        [(ngModel)]="userSettings.name"
+        #nameField="ngModel"
+        required
+        filed-error="form.submitted && nameField.invalid"
+      />
+      <div
+        *ngIf="form.submitted && nameField.invalid"
+        [ngClass]="{ alert: true, 'alert-danger': true }"
+      >
+        Enter name
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+
+      <input
+        type="text"
+        placeholder="Datepicker"
+        class="form-control"
+        name="startDate"
+        [(ngModel)]="userSettings.startDate"
+        bsDatepicker
+      />
+    </div>
+
+    <div class="form-check form-group">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="specialOffers"
+        name="specialOffers"
+        [(ngModel)]="userSettings.specialOffers"
+      />
+      <label class="form-check-label" for="specialOffers">
+        Special Offers
+      </label>
+    </div>
+
+    <label for="uiStyle">User Interface Style</label>
+    <div class="form-group">
+      <div class="btn-group">
+        <label
+          class="btn btn-primary"
+          [(ngModel)]="userSettings.uiStyle"
+          btnRadio="light"
+          tabindex="0"
+          role="button"
+          name="uiStyle"
+          >Light</label
+        >
+        <label
+          class="btn btn-primary"
+          [(ngModel)]="userSettings.uiStyle"
+          btnRadio="medium"
+          tabindex="0"
+          role="button"
+          name="uiStyle"
+          >Medium</label
+        >
+        <label
+          class="btn btn-primary"
+          [(ngModel)]="userSettings.uiStyle"
+          btnRadio="dark"
+          tabindex="0"
+          role="button"
+          name="uiStyle"
+          >Dark</label
+        >
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="subscriptionType">Subscription Type</label>
+      <select
+        class="form-control"
+        id="subscriptionType"
+        [(ngModel)]="userSettings.subscriptionType"
+        name="subscriptionType"
+        [subscriptionStartDate]="userSettings.startDate"
+        #subscriptionField="ngModel"
+      >
+        <option value="M">Monthly</option>
+        <option value="W">Weekly</option>
+        <option value="D">Daily</option>
+      </select>
+    </div>
+    <div
+      *ngIf="form.submitted && subscriptionField.invalid"
+      [ngClass]="{ alert: true, 'alert-danger': true }"
+    >
+      {{ subscriptionField.errors.invalid }}
+    </div>
+    <div class="form-group">
+      <label for="notes">Notes</label>
+      <textarea
+        rows="3"
+        id="notes"
+        class="form-control"
+        name="notes"
+        [(ngModel)]="userSettings.notes"
+      ></textarea>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      [(ngModel)]="userSettings.student"
+      btnCheckbox
+      name="isStudent"
+      btnCheckboxTrue="Student"
+      btnCheckboxFalse="Not Student"
+    >
+      {{ userSettings.student }}
+    </button>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" />
+    </div>
+    <button class="btn btn-primary">OK</button>
+  </form>
+  <pre>
+      {{ userSettings | json }}
+  </pre>
+</div>
