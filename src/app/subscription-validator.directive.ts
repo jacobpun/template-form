@@ -32,6 +32,8 @@ export class SubscriptionValidatorDirective implements Validator, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this._onChange();
+    if (this._onChange) {
+      this._onChange();
+    }
   }
 }
