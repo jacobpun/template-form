@@ -6,4 +6,11 @@ export interface UserSettings {
     notes: string,
     student: string,
     startDate: Date,
+    address: Address,
+}
+
+export interface Address {
+    line1?: string,
+    line2?: string,
+    city?: string
 }

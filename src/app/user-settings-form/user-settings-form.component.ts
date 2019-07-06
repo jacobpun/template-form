@@ -23,6 +23,11 @@ export class UserSettingsFormComponent implements OnInit, OnDestroy {
     notes: 'some notes goes here ...',
     student: 'Student',
     startDate: new Date(),
+    address: {
+      line1: '4',
+      line2: 'Byfield Circle',
+      city: 'Nashua',
+    },
   };
 
   ngOnInit() {
@@ -32,5 +37,14 @@ export class UserSettingsFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.destroy$.next(true);
+  }
+
+  getAddressError(error) : string {
+    if(error['line1']) {
+      return 'Line 1 is required'
+    }
+    if(error['city']) {
+      return 'City is required'
+    }
   }
 }

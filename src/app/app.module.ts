@@ -8,12 +8,16 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SubscriptionValidatorDirective } from './subscription-validator.directive';
+import { AddressComponent } from './address/address.component';
+import { AddressValidatorDirective } from './address-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserSettingsFormComponent,
-    SubscriptionValidatorDirective
+    SubscriptionValidatorDirective,
+    AddressComponent,
+    AddressValidatorDirective
   ],
   imports: [
     BrowserModule,
